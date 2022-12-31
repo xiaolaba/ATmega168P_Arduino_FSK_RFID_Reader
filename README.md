@@ -25,4 +25,4 @@ or copy [known_16bit_timers.h](known_16bit_timers.h) of this repo to patch.
 ![burn_hex_ok.JPG](burn_hex_ok.JPG)  
 
 ### [143KHz_LC_tank_testing](143KHz_LC_tank_testing)  
-[143KHz_LC_tank_testing/143KHZ_OSC.JPG](143KHz_LC_tank_testing/143KHZ_OSC.JPG)  
+![143KHz_LC_tank_testing/143KHZ_OSC.JPG](143KHz_LC_tank_testing/143KHZ_OSC.JPG)  
