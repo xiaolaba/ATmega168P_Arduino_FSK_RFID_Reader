@@ -28,3 +28,48 @@ or copy [known_16bit_timers.h](known_16bit_timers.h) of this repo to patch.
 LC tank tune to resonant frequency
 https://www.omnicalculator.com/physics/resonant-frequency-lc
 ![143KHz_LC_tank_testing/143KHZ_OSC.JPG](143KHz_LC_tank_testing/143KHZ_OSC.JPG)  
+
+the peak of adc readout is telling resonant frquency tunned,  
+![143KHz_LC_tank_testing/tuned_resonant.JPG](143KHz_LC_tank_testing/tuned_resonant.JPG)  
+
+
+peak detector algorithm
+```
+
+uint8_t i=255, peak_i=0;
+uint32_t temp=0, peak=0;
+
+
+void readadc()
+{
+    temp = analogRead(analogInPin);
+    Serial.print(i, DEC); Serial.print(",");
+    Serial.print(temp); Serial.print(",");
+    Serial.print(temp*1253*278/10230); Serial.println("mV");
+
+}
+
+
+void loop()
+{  
+  if (i > 0) {  // i decreament from 255 to 0
+    i--;
+    //Timer1.initialize(7); // 143KHz  
+    //Timer1.initialize(8); // 125KHz 
+    //Timer1.initialize(i); // 125KHz
+    OCR1A   = i; // PWM factor of Timer1, greater value, lower PWM frequency
+    OCR1B   = i; // PWM factor of Timer1, greater value, lower PWM frequency
+    //_delay_us (60);
+    temp = analogRead(analogInPin);  
+    if (peak < temp) {
+      peak=temp; // save peak voltage
+      peak_i = i;// save PWM factor
+    }
+  } else { // set LC tank to resonant frequency
+      OCR1A   = peak_i;            // 
+      OCR1B   = peak_i;
+  }
+
+  readadc();
+  }
+```
