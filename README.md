@@ -29,11 +29,11 @@ LC tank tune to resonant frequency
 https://www.omnicalculator.com/physics/resonant-frequency-lc
 ![143KHz_LC_tank_testing/143KHZ_OSC.JPG](143KHz_LC_tank_testing/143KHZ_OSC.JPG)  
 
-the peak of adc readout is telling resonant frquency tunned,  
+the peak of adc readout is telling resonant frequency tuned,    
 ![143KHz_LC_tank_testing/tuned_resonant.JPG](143KHz_LC_tank_testing/tuned_resonant.JPG)  
 
 
-peak detector algorithm
+peak detector algorithm, the code snippet      
 ```
 
 uint8_t i=255, peak_i=0;
